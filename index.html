@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Backend Engineer & Full Stack Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lucide-react@0.263.1/dist/esm/icons/coffee.js" data-icon="coffee"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lucide-react@0.263.1/dist/esm/icons/leaf.js" data-icon="leaf"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lucide-react@0.263.1/dist/esm/icons/code.js" data-icon="code"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lucide-react@0.263.1/dist/esm/icons/atom.js" data-icon="atom"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lucide-react@0.263.1/dist/esm/icons/database.js" data-icon="database"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lucide-react@0.263.1/dist/esm/icons/box.js" data-icon="box"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lucide-react@0.263.1/dist/esm/icons/link.js" data-icon="link"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lucide-react@0.263.1/dist/esm/icons/palette.js" data-icon="palette"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lucide-react@0.263.1/dist/esm/icons/git-branch.js" data-icon="git-branch"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lucide-react@0.263.1/dist/esm/icons/headphones.js" data-icon="headphones"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lucide-react@0.263.1/dist/esm/icons/tool.js" data-icon="tool"></script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0f172a;
+            color: #e2e8f0;
+        }
+        .glass-card {
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .skill-icon {
+            transition: all 0.3s ease;
+        }
+        .skill-icon:hover {
+            transform: translateY(-5px);
+        }
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(124, 58, 237, 0.1), 0 10px 10px -5px rgba(124, 58, 237, 0.04);
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -38px;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #7c3aed;
+            border: 4px solid #4f46e5;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+
+        // Manually map the imported Lucide icon modules to a components object
+        // The `data-icon` attribute is used to reference the imported script
+        const iconComponents = {};
+        document.querySelectorAll('script[data-icon]').forEach(script => {
+            const iconName = script.getAttribute('data-icon');
+            iconComponents[iconName] = window[`LucideReact${iconName.split('-').map(s => s.charAt(0).toUpperCase() + s.slice(1)).join('')}`];
+        });
+
+        const SkillIcon = ({ name, color }) => {
+            const Icon = iconComponents[name];
+            return Icon ? <Icon className={`${color} w-10 h-10 mb-2`} /> : null;
+        };
+
+        const Portfolio = () => {
+            const [isMenuOpen, setIsMenuOpen] = useState(false);
+            const [activeSection, setActiveSection] = useState('home');
+
+            useEffect(() => {
+                const handleScroll = () => {
+                    const sections = ['home', 'about', 'skills', 'projects', 'experience', 'contact'];
+                    for (const section of sections) {
+                        const element = document.getElementById(section);
+                        if (element) {
+                            const rect = element.getBoundingClientRect();
+                            if (rect.top <= 100 && rect.bottom >= 100) {
+                                setActiveSection(section);
+                                break;
+                            }
+                        }
+                    }
+                };
+                window.addEventListener('scroll', handleScroll);
+                return () => window.removeEventListener('scroll', handleScroll);
+            }, []);
+
+            const scrollToSection = (sectionId) => {
+                const element = document.getElementById(sectionId);
+                if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                    setIsMenuOpen(false);
+                }
+            };
+
+            const projects = [
+                {
+                    title: "E-Commerce Website",
+                    description: "Designed and developed the front-end of a responsive e-commerce website using HTML, CSS, JavaScript, and React, delivering an intuitive and visually appealing user experience. Implemented key features such as product listing pages, search functionality, and dynamic shopping cart using React state management. Optimized website performance by employing best practices in CSS and React, achieving faster load times and improved responsiveness across devices.",
+                    tags: ["HTML", "CSS", "JavaScript", "Reactjs"],
+                    github: "https://github.com/Tamilara5an/Ecommerse-mobiles/"
+                },
+                {
+                    title: "Web Application for Weather Detection",
+                    description: "Designed and developed a user-friendly web interface using HTML, CSS, JavaScript, and React.js, providing real-time weather updates through API integration. Implemented responsive design principles to ensure seamless functionality across different devices, enhancing user accessibility by 25%. Integrated interactive features such as search functionality and dynamic weather visuals, improving user engagement.",
+                    tags: ["HTML", "CSS", "JavaScript", "Reactjs"],
+                    github: "https://github.com/Tamilara5an/Weather-Application-using-web-API"
+                },
+                {
+                    title: "Blog Application using Blazor",
+                    description: "•	Developed a blog platform using C# Blazor Server with MudBlazor UI, enabling an interactive and modern user interface. Implemented role-based authentication and authorization to manage user access for creating, editing, and moderating posts. Built backend services with .NET to support post creation, commenting functionality, and secure data management.",
+                    tags: ["C#", "Blazor", "Supabase", "MongoDB", "MudBlazor"],
+                    github: "https://github.com/Tamilara5an/BlogApplication-using-Blazor-ServerApp"
+                },
+                {
+                    title: "Task Management System",
+                    description: "•	Designed and developed the frontend using React with Vite for a fast, responsive, and optimized user interface. Implemented backend services with Java (Spring Boot) to handle business logic, authentication, and RESTful APIs. Integrated SQL database for secure data storage, supporting task creation, updates, and role-based access control.",
+                    tags: ["Reactjs", "Java", "SpringBoot", "PostgreSQL", "RESTful APIs"],
+                    github: "#"
+                }
+            ];
+
+            const skills = [
+                { name: "Java", icon: "coffee", color: "text-blue-400" },
+                { name: "SpringBoot", icon: "leaf", color: "text-green-400" },
+                { name: "C#", icon: "code", color: "text-emerald-400" },
+                 { name: "HTML", icon: "code", color: "text-orange-500" },
+                 { name: "CSS", icon: "code", color: "text-emerald-400" },
+                { name: "JavaScript", icon: "code", color: "text-emerald-400" },
+                { name: "C#", icon: "code", color: "text-emerald-400" },
+                { name: "React.js", icon: "atom", color: "text-cyan-500" },
+                { name: "Postgres", icon: "database", color: "text-blue-300" },
+                { name: "MongoDB", icon: "leaf", color: "text-green-400" },
+                { name: "Docker", icon: "box", color: "text-blue-500" },
+                { name: "JDBC", icon: "link", color: "text-blue-400" },
+                { name: "Tailwind CSS", icon: "palette", color: "text-teal-400" },
+                { name: "Git", icon: "git-branch", color: "text-orange-400" },
+                { name: "Freshdesk", icon: "headphones", color: "text-purple-400" },
+                { name: "Freshservice", icon: "tool", color: "text-purple-400" }
+            ];
+
+            const experiences = [
+                {
+                    role: "Software Engineer",
+                    company: "SOL N TECH",
+                    period: "May 2025 - Present",
+                    description: "Developing and maintaining backend services using Java Spring Boot, implementing scalable business logic and RESTful APIs. Building responsive frontend applications with React.js and Tailwind CSS, ensuring seamless user experience and modern UI design. Worked with PostgreSQL for designing efficient database schemas and ensuring secure, optimized data storage. Working on Fresh service and Freshdesk integrations, customizing workflows and delivering automation solutions to enhance service management.",
+                    skills: ["Java", "SpringBoot", "React js", "PostgreSQL", "Fresh Works", "Fresh Desk"]
+                },
+                {
+                    role: "Software Engineer Trainee",
+                    company: "WISE WORK",
+                    period: "Nov 2024 - Apr 2023",
+                    description: "Developed full-stack web applications using C# .NET for backend and Blazor with MudBlazor for frontend, improving development efficiency by 25% through reusable UI components. Integrated MongoDB and Supabase authentication, enhancing application security and reducing unauthorized access risks by 30%. Built internal projects including a Weather App and Blog App, improving team productivity and showcasing rapid prototyping capabilities. Contributed to client-facing projects, delivering 100% on-time project completion and ensuring scalability, performance, and maintainability of solutions.",
+                    skills: ["Dot Net", "C#", "Blazor", "MongoDB", "Supabase", "MudBlazor"]
+                },
+                {
+                    role: "Full Stack Java Intern",
+                    company: "HANODALE SOLUTIONS SDN BHD",
+                    period: "Dec 2023 - May 2024",
+                    description: "Developed and maintained full-stack applications using Java, JDBC, Spring Boot, and MySQL, ensuring reliable and scalable solutions. Created dynamic front-end interfaces with React.js, boosting user engagement and responsiveness by 20%. Implemented RESTful APIs to streamline data exchange between frontend and backend services, improving system efficiency by 15%. Optimized MySQL queries, reducing response time by 15% and enhancing application performance.",
+                    skills: ["Java", "JDBC", "SpringBoot", "MySql", "React js"]
+                }
+            ];
+
+            return (
+                <div className="min-h-screen">
+                    {/* Navigation */}
+                    <nav className="fixed w-full bg-gray-900/80 backdrop-blur-md z-50 border-b border-gray-800">
+                        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                            <div className="flex items-center justify-between h-16">
+                                <div className="flex items-center">
+                                    <span className="text-xl font-bold bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent">
+                                        Portfolio
+                                    </span>
+                                </div>
+                                <div className="hidden md:block">
+                                    <div className="ml-10 flex items-baseline space-x-4">
+                                        {['home', 'about', 'skills', 'projects', 'experience', 'contact'].map((item) => (
+                                            <button
+                                                key={item}
+                                                onClick={() => scrollToSection(item)}
+                                                className={`px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 ${activeSection === item ? 'text-purple-400 bg-gray-800' : 'text-gray-300 hover:text-white hover:bg-gray-700'}`}
+                                            >
+                                                {item.charAt(0).toUpperCase() + item.slice(1)}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                                <div className="md:hidden">
+                                    <button
+                                        onClick={() => setIsMenuOpen(!isMenuOpen)}
+                                        className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none"
+                                    >
+                                        <i className={`fas ${isMenuOpen ? 'fa-times' : 'fa-bars'} text-xl`}></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        {isMenuOpen && (
+                            <div className="md:hidden bg-gray-900/95 backdrop-blur-lg">
+                                <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                                    {['home', 'about', 'skills', 'projects', 'experience', 'contact'].map((item) => (
+                                        <button
+                                            key={item}
+                                            onClick={() => scrollToSection(item)}
+                                            className={`block px-3 py-2 rounded-md text-base font-medium w-full text-left ${activeSection === item ? 'text-purple-400 bg-gray-800' : 'text-gray-300 hover:text-white hover:bg-gray-700'}`}
+                                        >
+                                            {item.charAt(0).toUpperCase() + item.slice(1)}
+                                        </button>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+                    </nav>
+
+                    {/* Hero Section */}
+                    <section id="home" className="pt-24 pb-16 md:pt-32 md:pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto min-h-screen flex items-center">
+                        <div className="text-center md:text-left w-full">
+                            <h1 className="text-4xl md:text-6xl font-bold mb-4">
+                                Hi, I'm <span className="bg-gradient-to-r from-purple-400 to-blue-500 bg-clip-text text-transparent">Tamilarasan</span>
+                            </h1>
+                            <h2 className="text-2xl md:text-3xl font-semibold mb-6 text-gray-300">
+                                Java Developer & <span className="text-blue-400">Full Stack Developer</span>
+                            </h2>
+                            <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto md:mx-0 mb-8">
+                                I build scalable backend systems and automate cloud infrastructure to deliver robust and efficient solutions.
+                            </p>
+                            <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                                <button className="px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 rounded-md font-medium text-white hover:from-purple-700 hover:to-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-purple-900/20">
+                                    Download Resume
+                                </button>
+                                <button
+                                    onClick={() => scrollToSection('contact')}
+                                    className="px-6 py-3 border border-purple-500 text-purple-400 rounded-md font-medium hover:bg-purple-900/30 transition-all duration-300"
+                                >
+                                    Contact Me
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* About Section */}
+                    <section id="about" className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+                        <h2 className="text-3xl font-bold mb-12 text-center">
+                            <span className="border-b-2 border-purple-500 pb-1">About Me</span>
+                        </h2>
+                        <div className="flex flex-col md:flex-row gap-12 items-center">
+                            <div className="md:w-1/3 flex justify-center">
+                                <div className="relative">
+                                    <div className="w-64 h-64 rounded-full">
+                                        <div className="w-full h-full rounded-full bg-gray-900 overflow-hidden">
+                                            <img
+                                                src="asserts/tamil.jpg"
+                                                alt="Profile"
+                                                className="w-full h-full object-cover"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="absolute -bottom-3 -right-3 bg-gray-800 rounded-full p-3 border-2 border-gray-700">
+                                        <i className="fas fa-code text-xl text-purple-400"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="md:w-2/3">
+                                <p className="text-lg text-gray-300 mb-6">
+                                    I’m a passionate Full Stack Developer currently working at <span className="text-blue-400">Sol N Tech</span>, where I specialize in building scalable applications using Java Spring Boot for the backend and React for dynamic, user-friendly frontends.
+                                </p>
+                                <p className="text-lg text-gray-300 mb-6">
+                                    My role involves contributing to key projects for Freshworks, particularly enhancing and maintaining solutions for Freshdesk and Freshservice, ensuring seamless integration and performance.
+                                </p>
+                                <p className="text-lg text-gray-300">
+                                    Beyond coding, I actively explore modern software practices, focusing on optimizing workflows, learning advanced system design concepts, and staying updated with the latest trends in full stack development.
+                                </p>
+                                <div className="mt-8 flex flex-wrap gap-4">
+                                    <div className="flex items-center gap-2 bg-gray-800/50 px-4 py-2 rounded-full">
+                                        <i className="fas fa-map-marker-alt text-purple-400"></i>
+                                        <span>Bengaluru, India</span>
+                                    </div>
+                                    <div className="flex items-center gap-2 bg-gray-800/50 px-4 py-2 rounded-full">
+                                        <i className="fas fa-graduation-cap text-blue-400"></i>
+                                        <span>Computer Science Graduate</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Skills Section */}
+                    <section id="skills" className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-gray-900/50">
+                        <h2 className="text-3xl font-bold mb-12 text-center">
+                            <span className="border-b-2 border-purple-500 pb-1">Technical Skills</span>
+                        </h2>
+                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-6">
+                            {skills.map((skill, index) => (
+                                <div
+                                    key={index}
+                                    className="flex flex-col items-center p-4 glass-card rounded-xl hover:bg-gray-800/50 transition-all duration-300 skill-icon"
+                                >
+                                    <SkillIcon name={skill.icon} color={skill.color} />
+                                    <span className="text-sm font-medium text-center">{skill.name}</span>
+                                </div>
+                            ))}
+                        </div>
+                    </section>
+
+                    {/* Projects Section */}
+                    <section id="projects" className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+                        <h2 className="text-3xl font-bold mb-12 text-center">
+                            <span className="border-b-2 border-purple-500 pb-1">Featured Projects</span>
+                        </h2>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            {projects.map((project, index) => (
+                                <div
+                                    key={index}
+                                    className="bg-gray-900 rounded-xl overflow-hidden border border-gray-800 project-card transition-all duration-300 hover:border-purple-500/30"
+                                >
+                                    <div className="h-48 bg-gradient-to-br from-purple-900/30 to-blue-900/30 flex items-center justify-center">
+                                        <i className="fas fa-code-branch text-6xl text-purple-400/30"></i>
+                                    </div>
+                                    <div className="p-6">
+                                        <h3 className="text-xl font-bold mb-2">{project.title}</h3>
+                                        <p className="text-gray-400 mb-4">{project.description}</p>
+                                        <div className="flex flex-wrap gap-2 mb-4">
+                                            {project.tags.map((tag, i) => (
+                                                <span key={i} className="text-xs bg-gray-800 text-blue-300 px-2 py-1 rounded-full">
+                                                    {tag}
+                                                </span>
+                                            ))}
+                                        </div>
+                                        <a
+                                            href={project.github}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="inline-flex items-center text-purple-400 hover:text-purple-300"
+                                        >
+                                            <i className="fab fa-github mr-2"></i>
+                                            View on GitHub
+                                        </a>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </section>
+
+                    {/* Experience Section */}
+                    <section id="experience" className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-gray-900/50">
+                        <h2 className="text-3xl font-bold mb-12 text-center">
+                            <span className="border-b-2 border-purple-500 pb-1">Professional Experience</span>
+                        </h2>
+                        <div className="relative max-w-3xl mx-auto">
+                            <div className="absolute left-8 md:left-1/2 h-full border-l-2 border-gray-700 border-dashed"></div>
+                            {experiences.map((exp, index) => (
+                                <div
+                                    key={index}
+                                    className={`mb-12 relative pl-12 md:pl-0 ${index % 2 === 0 ? 'md:pr-12 md:text-right' : 'md:pl-12'}`}
+                                >
+                                    <div className={`glass-card p-6 rounded-xl ${index % 2 === 0 ? 'md:mr-8' : 'md:ml-8'}`}>
+                                        <h3 className="text-xl font-bold text-purple-400">{exp.role}</h3>
+                                        <p className="text-blue-300 font-medium mb-2">{exp.company} • {exp.period}</p>
+                                        <p className="text-gray-300 mb-4">{exp.description}</p>
+                                        <div className="flex flex-wrap gap-2">
+                                            {exp.skills.map((skill, i) => (
+                                                <span key={i} className="text-xs bg-gray-800 text-blue-300 px-2 py-1 rounded-full">
+                                                    {skill}
+                                                </span>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </section>
+
+                    {/* Contact Section */}
+                    <section id="contact" className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+                        <h2 className="text-3xl font-bold mb-12 text-center">
+                            <span className="border-b-2 border-purple-500 pb-1">Get In Touch</span>
+                        </h2>
+                        <div className="flex flex-col lg:flex-row gap-12">
+                            <div className="lg:w-1/2">
+                                <form className="space-y-6">
+                                    <div>
+                                        <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-1">Name</label>
+                                        <input
+                                            type="text"
+                                            id="name"
+                                            className="w-full bg-gray-800 border border-gray-700 rounded-md px-4 py-2 text-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                                            placeholder="Your name"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-1">Email</label>
+                                        <input
+                                            type="email"
+                                            id="email"
+                                            className="w-full bg-gray-800 border border-gray-700 rounded-md px-4 py-2 text-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                                            placeholder="your.email@example.com"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-1">Message</label>
+                                        <textarea
+                                            id="message"
+                                            rows="5"
+                                            className="w-full bg-gray-800 border border-gray-700 rounded-md px-4 py-2 text-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                                            placeholder="Your message here..."
+                                        ></textarea>
+                                    </div>
+                                    <button
+                                        type="submit"
+                                        className="px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 rounded-md font-medium text-white hover:from-purple-700 hover:to-blue-700 transition-all duration-300"
+                                    >
+                                        Send Message
+                                    </button>
+                                </form>
+                            </div>
+                            <div className="lg:w-1/2">
+                                <div className="glass-card p-8 rounded-xl h-full">
+                                    <h3 className="text-xl font-bold text-purple-400 mb-6">Contact Information</h3>
+                                    <div className="space-y-4">
+                                        <div className="flex items-center gap-4">
+                                            <div className="bg-purple-900/30 p-3 rounded-full">
+                                                <i className="fas fa-envelope text-purple-400 text-xl"></i>
+                                            </div>
+                                            <div>
+                                                <p className="text-sm text-gray-400">Email</p>
+                                                <a href="mailto:tamilarasancse09@gmail.com" className="text-blue-300 hover:underline">tamilarasancse09@gmail.com</a>
+                                            </div>
+                                        </div>
+                                        <div className="flex items-center gap-4">
+                                            <div className="bg-blue-900/30 p-3 rounded-full">
+                                                <i className="fab fa-linkedin-in text-blue-400 text-xl"></i>
+                                            </div>
+                                            <div>
+                                                <p className="text-sm text-gray-400">LinkedIn</p>
+                                                <a href="https://www.linkedin.com/in/tamilarasan-m-a7babb222/" target="_blank" rel="noopener noreferrer" className="text-blue-300 hover:underline">https://www.linkedin.com/in/tamilarasan-m-a7babb222/</a>
+                                            </div>
+                                        </div>
+                                        <div className="flex items-center gap-4">
+                                            <div className="bg-gray-800/30 p-3 rounded-full">
+                                                <i className="fab fa-github text-gray-300 text-xl"></i>
+                                            </div>
+                                            <div>
+                                                <p className="text-sm text-gray-400">GitHub</p>
+                                                <a href="https://github.com/Tamilara5an" target="_blank" rel="noopener noreferrer" className="text-blue-300 hover:underline">https://github.com/Tamilara5an</a>
+                                            </div>
+                                        </div>
+                                       
+                                    </div>
+                                    <div className="mt-8">
+                                        <h4 className="text-lg font-semibold mb-4">Let's connect on social media</h4>
+                                        <div className="flex gap-4">
+                                            <a href="#" className="bg-gray-800 p-3 rounded-full hover:bg-purple-900/30 transition-all duration-300">
+                                                <i className="fab fa-twitter text-blue-400"></i>
+                                            </a>
+                                            <a href="https://www.linkedin.com/in/tamilarasan-m-a7babb222/" className="bg-gray-800 p-3 rounded-full hover:bg-blue-900/30 transition-all duration-300">
+                                                <i className="fab fa-linkedin-in text-blue-400"></i>
+                                            </a>
+                                            <a href="https://github.com/Tamilara5an" className="bg-gray-800 p-3 rounded-full hover:bg-gray-700/30 transition-all duration-300">
+                                                <i className="fab fa-github text-gray-300"></i>
+                                            </a>
+                                            <a href="#" className="bg-gray-800 p-3 rounded-full hover:bg-red-900/30 transition-all duration-300">
+                                                <i className="fab fa-youtube text-red-400"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Footer */}
+                    <footer className="py-8 px-4 sm:px-6 lg:px-8 bg-gray-900/80 border-t border-gray-800">
+                        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
+                            <div className="mb-4 md:mb-0">
+                                <span className="text-xl font-bold bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent">
+                                    Tamilarasan M
+                                </span>
+                                <p className="text-gray-400 text-sm mt-1">Software Engineer</p>
+                            </div>
+                            <div className="flex gap-6">
+                                <a href="https://github.com/Tamilara5an" className="text-gray-400 hover:text-purple-400 transition-colors duration-300">
+                                    <i className="fab fa-github text-xl"></i>
+                                </a>
+                                <a href="https://www.linkedin.com/in/tamilarasan-m-a7babb222/" className="text-gray-400 hover:text-blue-400 transition-colors duration-300">
+                                    <i className="fab fa-linkedin-in text-xl"></i>
+                                </a>
+                                <a href="#" className="text-gray-400 hover:text-red-400 transition-colors duration-300">
+                                    <i className="fab fa-youtube text-xl"></i>
+                                </a>
+                                <a href="#" className="text-gray-400 hover:text-blue-400 transition-colors duration-300">
+                                    <i className="fab fa-twitter text-xl"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div className="mt-6 text-center text-gray-500 text-sm">
+                            <p>© {new Date().getFullYear()} Tamilarasan M. All rights reserved.</p>
+                        </div>
+                    </footer>
+                </div>
+            );
+        };
+        
+        ReactDOM.createRoot(document.getElementById('root')).render(<Portfolio />);
+    </script>
+</body>
+</html>
