@@ -72,18 +72,15 @@
             iconComponents[iconName] = window[`LucideReact${iconName.split('-').map(s => s.charAt(0).toUpperCase() + s.slice(1)).join('')}`];
         });
 
-        const SkillIcon = ({ name, color }) => {
-            useEffect(() => {
-                lucide.createIcons(); // initialize icons
-            }, []);
-
-            return (
-                <i
-                data-lucide={name}
-                className={`${color} w-10 h-10 mb-2`}
-                ></i>
-            );
-            };
+      const SkillIcon = ({ icon, name }) => {
+  return (
+    <img 
+      src={icon} 
+      alt={name} 
+      className="w-10 h-10 mb-2 transition-transform duration-300 hover:scale-110" 
+    />
+  );
+};
 
 
         const Portfolio = () => {
@@ -121,46 +118,53 @@
                     title: "E-Commerce Website",
                     description: "Designed and developed the front-end of a responsive e-commerce website using HTML, CSS, JavaScript, and React, delivering an intuitive and visually appealing user experience. Implemented key features such as product listing pages, search functionality, and dynamic shopping cart using React state management. Optimized website performance by employing best practices in CSS and React, achieving faster load times and improved responsiveness across devices.",
                     tags: ["HTML", "CSS", "JavaScript", "Reactjs"],
-                    github: "https://github.com/Tamilara5an/Ecommerse-mobiles/"
+                    github: "https://github.com/Tamilara5an/Ecommerse-mobiles/",
+                     image: "asserts/ecom.jpeg"
                 },
                 {
                     title: "Web Application for Weather Detection",
                     description: "Designed and developed a user-friendly web interface using HTML, CSS, JavaScript, and React.js, providing real-time weather updates through API integration. Implemented responsive design principles to ensure seamless functionality across different devices, enhancing user accessibility by 25%. Integrated interactive features such as search functionality and dynamic weather visuals, improving user engagement.",
                     tags: ["HTML", "CSS", "JavaScript", "Reactjs"],
-                    github: "https://github.com/Tamilara5an/Weather-Application-using-web-API"
+                    github: "https://github.com/Tamilara5an/Weather-Application-using-web-API",
+                     image: "asserts/weather.jpeg"
                 },
                 {
                     title: "Blog Application using Blazor",
                     description: "•	Developed a blog platform using C# Blazor Server with MudBlazor UI, enabling an interactive and modern user interface. Implemented role-based authentication and authorization to manage user access for creating, editing, and moderating posts. Built backend services with .NET to support post creation, commenting functionality, and secure data management.",
                     tags: ["C#", "Blazor", "Supabase", "MongoDB", "MudBlazor"],
-                    github: "https://github.com/Tamilara5an/BlogApplication-using-Blazor-ServerApp"
+                    github: "https://github.com/Tamilara5an/BlogApplication-using-Blazor-ServerApp",
+                     image: "asserts/blog.jpeg"
                 },
                 {
                     title: "Task Management System",
                     description: "•	Designed and developed the frontend using React with Vite for a fast, responsive, and optimized user interface. Implemented backend services with Java (Spring Boot) to handle business logic, authentication, and RESTful APIs. Integrated SQL database for secure data storage, supporting task creation, updates, and role-based access control.",
                     tags: ["Reactjs", "Java", "SpringBoot", "PostgreSQL", "RESTful APIs"],
-                    github: "#"
+                    github: "#",
+                    image: "asserts/task.jpg"
                 }
             ];
 
             const skills = [
-                { name: "Java", icon: "coffee", color: "text-blue-400" },
-                { name: "SpringBoot", icon: "leaf", color: "text-green-400" },
-                { name: "C#", icon: "code", color: "text-emerald-400" },
-                 { name: "HTML", icon: "code", color: "text-orange-500" },
-                 { name: "CSS", icon: "code", color: "text-emerald-400" },
-                { name: "JavaScript", icon: "code", color: "text-emerald-400" },
-                { name: "C#", icon: "code", color: "text-emerald-400" },
-                { name: "React.js", icon: "atom", color: "text-cyan-500" },
-                { name: "Postgres", icon: "database", color: "text-blue-300" },
-                { name: "MongoDB", icon: "leaf", color: "text-green-400" },
-                { name: "Docker", icon: "box", color: "text-blue-500" },
-                { name: "JDBC", icon: "link", color: "text-blue-400" },
-                { name: "Tailwind CSS", icon: "palette", color: "text-teal-400" },
-                { name: "Git", icon: "git-branch", color: "text-orange-400" },
-                { name: "Freshdesk", icon: "headphones", color: "text-purple-400" },
-                { name: "Freshservice", icon: "tool", color: "text-purple-400" }
-            ];
+  { name: "Java", icon: "https://cdn-icons-png.flaticon.com/512/226/226777.png" },
+{ name: "SpringBoot", icon: "https://img.icons8.com/color/512/spring-logo.png" },
+  { name: "C#", icon: "https://cdn-icons-png.flaticon.com/512/6132/6132221.png" },
+  { name: "HTML", icon: "https://cdn-icons-png.flaticon.com/512/174/174854.png" },
+  { name: "CSS", icon: "https://cdn-icons-png.flaticon.com/512/732/732190.png" },
+  { name: "JavaScript", icon: "https://cdn-icons-png.flaticon.com/512/5968/5968292.png" },
+  { name: "React.js", icon: "https://cdn-icons-png.flaticon.com/512/1126/1126012.png" },
+  { name: "Postman", icon: "https://img.icons8.com/?size=100&id=EPbEfEa7o8CB&format=png&color=000000" },
+   { name: "Vite", icon: "https://img.icons8.com/?size=100&id=dJjTWMogzFzg&format=png&color=000000" },
+  { name: "Postgres", icon: "https://cdn-icons-png.flaticon.com/512/5968/5968342.png" },
+  { name: "MongoDB", icon: "https://img.icons8.com/color/512/mongo-db.png" },
+  { name: "Docker", icon: "https://cdn-icons-png.flaticon.com/512/919/919853.png" },
+  { name: "JDBC", icon: "https://cdn-icons-png.flaticon.com/512/4248/4248443.png" },
+  { name: "Tailwind CSS", icon: "https://img.icons8.com/color/512/tailwindcss.png" },
+  { name: "Git", icon: "https://img.icons8.com/color/512/git.png" },
+   { name: "Node JS", icon: "https://img.icons8.com/?size=100&id=54087&format=png&color=000000" },
+  { name: "Freshdesk", icon: "https://img.icons8.com/?size=100&id=apQXuzIOhFBG&format=png&color=40C057" },
+  { name: "Freshservice", icon: "https://img.icons8.com/?size=100&id=9267&format=png&color=22C3E6" }
+];
+
 
             const experiences = [
                 {
@@ -310,22 +314,23 @@
                     </section>
 
                     {/* Skills Section */}
-                    <section id="skills" className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-gray-900/50">
-                        <h2 className="text-3xl font-bold mb-12 text-center">
-                            <span className="border-b-2 border-purple-500 pb-1">Technical Skills</span>
-                        </h2>
-                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-6">
-                            {skills.map((skill, index) => (
-                                <div
-                                    key={index}
-                                    className="flex flex-col items-center p-4 glass-card rounded-xl hover:bg-gray-800/50 transition-all duration-300 skill-icon"
-                                >
-                                    <SkillIcon name={skill.icon} color={skill.color} />
-                                    <span className="text-sm font-medium text-center">{skill.name}</span>
-                                </div>
-                            ))}
-                        </div>
-                    </section>
+                  <section id="skills" className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-gray-900/50">
+  <h2 className="text-3xl font-bold mb-12 text-center">
+    <span className="border-b-2 border-purple-500 pb-1">Technical Skills</span>
+  </h2>
+  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-6">
+    {skills.map((skill, index) => (
+      <div
+        key={index}
+        className="flex flex-col items-center p-4 glass-card rounded-xl hover:bg-gray-800/50 transition-all duration-300"
+      >
+        <SkillIcon icon={skill.icon} name={skill.name} />
+        <span className="text-sm font-medium text-center">{skill.name}</span>
+      </div>
+    ))}
+  </div>
+</section>
+
 
                     {/* Projects Section */}
                     <section id="projects" className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
@@ -334,34 +339,31 @@
                         </h2>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                             {projects.map((project, index) => (
-                                <div
-                                    key={index}
-                                    className="bg-gray-900 rounded-xl overflow-hidden border border-gray-800 project-card transition-all duration-300 hover:border-purple-500/30"
-                                >
-                                    <div className="h-48 bg-gradient-to-br from-purple-900/30 to-blue-900/30 flex items-center justify-center">
-                                        <i className="fas fa-code-branch text-6xl text-purple-400/30"></i>
-                                    </div>
-                                    <div className="p-6">
-                                        <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-                                        <p className="text-gray-400 mb-4">{project.description}</p>
-                                        <div className="flex flex-wrap gap-2 mb-4">
-                                            {project.tags.map((tag, i) => (
-                                                <span key={i} className="text-xs bg-gray-800 text-blue-300 px-2 py-1 rounded-full">
-                                                    {tag}
-                                                </span>
-                                            ))}
-                                        </div>
-                                        <a
-                                            href={project.github}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="inline-flex items-center text-purple-400 hover:text-purple-300"
-                                        >
-                                            <i className="fab fa-github mr-2"></i>
-                                            View on GitHub
-                                        </a>
-                                    </div>
-                                </div>
+                            <div className="bg-gray-900 rounded-xl overflow-hidden border border-gray-800 project-card transition-all duration-300 hover:border-purple-500/30">
+    {project.image ? (
+        <img src={project.image} alt={project.title} className="h-48 w-full object-cover" />
+    ) : (
+        <div className="h-48 bg-gradient-to-br from-purple-900/30 to-blue-900/30 flex items-center justify-center">
+            <i className="fas fa-code-branch text-6xl text-purple-400/30"></i>
+        </div>
+    )}
+    <div className="p-6">
+        <h3 className="text-xl font-bold mb-2">{project.title}</h3>
+        <p className="text-gray-400 mb-4">{project.description}</p>
+        <div className="flex flex-wrap gap-2 mb-4">
+            {project.tags.map((tag, i) => (
+                <span key={i} className="text-xs bg-gray-800 text-blue-300 px-2 py-1 rounded-full">
+                    {tag}
+                </span>
+            ))}
+        </div>
+        <a href={project.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-purple-400 hover:text-purple-300">
+            <i className="fab fa-github mr-2"></i>
+            View on GitHub
+        </a>
+    </div>
+</div>
+
                             ))}
                         </div>
                     </section>
