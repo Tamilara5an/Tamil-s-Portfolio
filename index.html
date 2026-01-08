@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tamilarasan| Java Engineer & Full Stack Developer</title>
+    <title>Tamilarasan| Java Full Stack Developer</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
@@ -24,6 +24,8 @@
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="asserts/T.png" />
+
     <style>
         body {
             font-family: 'Poppins', sans-serif;
@@ -86,6 +88,46 @@
         const Portfolio = () => {
             const [isMenuOpen, setIsMenuOpen] = useState(false);
             const [activeSection, setActiveSection] = useState('home');
+            const companies = ["Sol N Tech", "August Innovate"];
+            const [companyIndex, setCompanyIndex] = useState(0);
+            const expCompanies = ["SOL N TECH", "August Innovate"];
+const [expCompanyIndex, setExpCompanyIndex] = useState(0);
+const fullName = "Tamilarasan M";
+const [displayName, setDisplayName] = useState("");
+const [charIndex, setCharIndex] = useState(0);
+
+useEffect(() => {
+  const typingInterval = setInterval(() => {
+    if (charIndex < fullName.length) {
+      setDisplayName((prev) => prev + fullName[charIndex]);
+      setCharIndex((prev) => prev + 1);
+    } else {
+      // pause, then restart
+      setTimeout(() => {
+        setDisplayName("");
+        setCharIndex(0);
+      }, 1200);
+    }
+  }, 150); // typing speed
+
+  return () => clearInterval(typingInterval);
+}, [charIndex]);
+
+useEffect(() => {
+  const interval = setInterval(() => {
+    setExpCompanyIndex((prev) => (prev + 1) % expCompanies.length);
+  }, 2500); // 2.5 seconds
+
+  return () => clearInterval(interval);
+}, []);
+
+            useEffect(() => {
+               const interval = setInterval(() => {
+               setCompanyIndex((prev) => (prev + 1) % companies.length);
+                  }, 2500); // changes every 2.5 seconds
+
+              return () => clearInterval(interval);
+}, []);
 
             useEffect(() => {
                 const handleScroll = () => {
@@ -170,7 +212,7 @@
                 {
                     role: "Software Engineer",
                     company: "SOL N TECH",
-                    period: "May 2025 - Present",
+                    period: "April 2025 - Present",
                     description: "Developing and maintaining backend services using Java Spring Boot, implementing scalable business logic and RESTful APIs. Building responsive frontend applications with React.js and Tailwind CSS, ensuring seamless user experience and modern UI design. Worked with PostgreSQL for designing efficient database schemas and ensuring secure, optimized data storage. Working on Fresh service and Freshdesk integrations, customizing workflows and delivering automation solutions to enhance service management.",
                     skills: ["Java", "SpringBoot", "React js", "PostgreSQL", "Fresh Works", "Fresh Desk"]
                 },
@@ -196,7 +238,12 @@
                     <nav className="fixed w-full bg-gray-900/80 backdrop-blur-md z-50 border-b border-gray-800">
                         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                             <div className="flex items-center justify-between h-16">
-                                <div className="flex items-center">
+                                <div className="flex items-center gap-2">
+                                     <img
+    src="asserts/T.png"
+    alt="Logo"
+    className="w-8 h-8 object-contain"
+  />
                                     <span className="text-xl font-bold bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent">
                                         Portfolio
                                     </span>
@@ -244,9 +291,12 @@
                     {/* Hero Section */}
                     <section id="home" className="pt-24 pb-16 md:pt-32 md:pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto min-h-screen flex items-center">
                         <div className="text-center md:text-left w-full">
-                            <h1 className="text-4xl md:text-6xl font-bold mb-4">
-                                Hi, I'm <span className="bg-gradient-to-r from-purple-400 to-blue-500 bg-clip-text text-transparent">Tamilarasan</span>
-                            </h1>
+                           <h1 className="text-4xl md:text-6xl font-bold mb-4">
+  Hi, I'm{" "}
+  <span className="bg-gradient-to-r from-purple-400 to-blue-500 bg-clip-text text-transparent">
+    {displayName}
+  </span>
+</h1>
                             <h2 className="text-2xl md:text-3xl font-semibold mb-6 text-gray-300">
                                 Java Developer & <span className="text-blue-400">Full Stack Developer</span>
                             </h2>
@@ -294,15 +344,21 @@
                                 </div>
                             </div>
                             <div className="md:w-2/3">
-                                <p className="text-lg text-gray-300 mb-6">
-                                    I’m a passionate Full Stack Developer currently working at <span className="text-blue-400">Sol N Tech</span>, where I specialize in building scalable applications using Java Spring Boot for the backend and React for dynamic, user-friendly frontends.
-                                </p>
-                                <p className="text-lg text-gray-300 mb-6">
-                                    My role involves contributing to key projects for Freshworks, particularly enhancing and maintaining solutions for Freshdesk and Freshservice, ensuring seamless integration and performance.
-                                </p>
-                                <p className="text-lg text-gray-300">
-                                    Beyond coding, I actively explore modern software practices, focusing on optimizing workflows, learning advanced system design concepts, and staying updated with the latest trends in full stack development.
-                                </p>
+<p className="text-lg text-gray-300 mb-6 md:text-justify leading-relaxed">
+  I’m a passionate Full Stack Developer currently working at{" "}
+  <span className="text-blue-400 transition-opacity duration-500">
+    {companies[companyIndex]}
+  </span>
+  , where I specialize in building scalable applications using Java Spring Boot for the backend and React for dynamic, user-friendly frontends.
+</p>
+
+<p className="text-lg text-gray-300 mb-6 md:text-justify leading-relaxed">
+  My role involves contributing to key projects for Freshworks, particularly enhancing and maintaining solutions for Freshdesk and Freshservice, ensuring seamless integration and performance.
+</p>
+
+<p className="text-lg text-gray-300 md:text-justify leading-relaxed">
+  Beyond coding, I actively explore modern software practices, focusing on optimizing workflows, learning advanced system design concepts, and staying updated with the latest trends in full stack development.
+</p>
                                 <div className="mt-8 flex flex-wrap gap-4">
                                     <div className="flex items-center gap-2 bg-gray-800/50 px-4 py-2 rounded-full">
                                         <i className="fas fa-map-marker-alt text-purple-400"></i>
@@ -353,7 +409,9 @@
     )}
     <div className="p-6">
         <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-        <p className="text-gray-400 mb-4">{project.description}</p>
+        <p className="text-gray-400 mb-4 md:text-justify leading-relaxed">
+  {project.description}
+</p>
         <div className="flex flex-wrap gap-2 mb-4">
             {project.tags.map((tag, i) => (
                 <span key={i} className="text-xs bg-gray-800 text-blue-300 px-2 py-1 rounded-full">
@@ -386,9 +444,19 @@
                                 >
                                     <div className={`glass-card p-6 rounded-xl ${index % 2 === 0 ? 'md:mr-8' : 'md:ml-8'}`}>
                                         <h3 className="text-xl font-bold text-purple-400">{exp.role}</h3>
-                                        <p className="text-blue-300 font-medium mb-2">{exp.company} • {exp.period}</p>
-                                        <p className="text-gray-300 mb-4">{exp.description}</p>
-                                        <div className="flex flex-wrap gap-2">
+                                       <p className="text-blue-300 font-medium mb-2">
+  {index === 0 ? (
+    <span className="transition-opacity duration-500">
+      {expCompanies[expCompanyIndex]}
+    </span>
+  ) : (
+    exp.company
+  )}{" "}
+  • {exp.period}
+</p>
+<p className="text-gray-300 mb-4 text-justify leading-relaxed">
+  {exp.description}
+</p>                                        <div className="flex flex-wrap gap-2">
                                             {exp.skills.map((skill, i) => (
                                                 <span key={i} className="text-xs bg-gray-800 text-blue-300 px-2 py-1 rounded-full">
                                                     {skill}
@@ -463,7 +531,7 @@
                                             </div>
                                             <div>
                                                 <p className="text-sm text-gray-400">LinkedIn</p>
-                                                <a href="https://www.linkedin.com/in/tamilarasan-m-a7babb222/" target="_blank" rel="noopener noreferrer" className="text-blue-300 hover:underline">https://www.linkedin.com/in/tamilarasan-m-a7babb222/</a>
+                                                <a href="https://www.linkedin.com/in/tamilarasan-dev/" target="_blank" rel="noopener noreferrer" className="text-blue-300 hover:underline">https://www.linkedin.com/in/tamilarasan-dev/</a>
                                             </div>
                                         </div>
                                         <div className="flex items-center gap-4">
