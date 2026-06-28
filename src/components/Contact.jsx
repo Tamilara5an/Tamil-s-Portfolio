@@ -1,4 +1,6 @@
+
 import React from 'react'
+import hackerImg from '../assets/hacker.jpg'
 
 const Contact = () => {
   return (
@@ -58,96 +60,98 @@ const Contact = () => {
 
         {/* Contact Info */}
         <div className="lg:w-1/2">
-          <div className="glass-card p-8 rounded-xl h-full">
-            <h3 className="text-xl font-bold text-purple-400 mb-6">Contact Information</h3>
+          <div className="glass-card p-6 rounded-xl h-full flex items-center justify-between gap-8">
+            <div className="flex-grow">
+              <h3 className="text-xl font-bold text-purple-400 mb-6">Contact Information</h3>
 
-            <div className="space-y-4">
-              {/* Email */}
-              <div className="flex items-center gap-4">
-                <div className="bg-purple-900/30 p-3 rounded-full">
-                  <i className="fas fa-envelope text-purple-400 text-xl"></i>
+              <div className="space-y-4">
+                {/* Email */}
+                <div className="flex items-center gap-4">
+                  <div className="bg-purple-900/30 p-3 rounded-full">
+                    <i className="fas fa-envelope text-purple-400 text-xl"></i>
+                  </div>
+                  <div>
+                    <a
+                      href="mailto:tamilaraanm@gmail.com"
+                      className="text-sm text-blue-300 hover:underline"
+                    >
+                      Email
+                    </a>
+                  </div>
                 </div>
-                <div>
-                  <p className="text-sm text-gray-400">Email</p>
-                  <a
-                    href="mailto:tamilarasancse09@gmail.com"
-                    className="text-blue-300 hover:underline"
-                  >
-                    tamilarasancse09@gmail.com
-                  </a>
+
+                {/* LinkedIn */}
+                <div className="flex items-center gap-4">
+                  <div className="bg-blue-900/30 p-3 rounded-full">
+                    <i className="fab fa-linkedin-in text-blue-400 text-xl"></i>
+                  </div>
+                  <div>
+                    <a
+                      href="https://www.linkedin.com/in/tamilarasan-dev/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm text-blue-300 hover:underline"
+                    >
+                      LinkedIn
+                    </a>
+                  </div>
+                </div>
+
+                {/* GitHub */}
+                <div className="flex items-center gap-4">
+                  <div className="bg-gray-800/30 p-3 rounded-full">
+                    <i className="fab fa-github text-gray-300 text-xl"></i>
+                  </div>
+                  <div>
+                    <a
+                      href="https://github.com/Tamilara5an"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm text-blue-300 hover:underline"
+                    >
+                      GitHub
+                    </a>
+                  </div>
                 </div>
               </div>
 
-              {/* LinkedIn */}
-              <div className="flex items-center gap-4">
-                <div className="bg-blue-900/30 p-3 rounded-full">
-                  <i className="fab fa-linkedin-in text-blue-400 text-xl"></i>
-                </div>
-                <div>
-                  <p className="text-sm text-gray-400">LinkedIn</p>
+              {/* Social Links */}
+              <div className="mt-8">
+                <h4 className="text-lg font-semibold mb-4">Let's connect on social media</h4>
+                <div className="flex gap-4">
+                  <a
+                    href="#"
+                    className="bg-gray-800 p-3 rounded-full hover:bg-purple-900/30 transition-all duration-300"
+                  >
+                    <i className="fab fa-twitter text-blue-400"></i>
+                  </a>
                   <a
                     href="https://www.linkedin.com/in/tamilarasan-dev/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-blue-300 hover:underline"
+                    className="bg-gray-800 p-3 rounded-full hover:bg-blue-900/30 transition-all duration-300"
                   >
-                    https://www.linkedin.com/in/tamilarasan-dev/
+                    <i className="fab fa-linkedin-in text-blue-400"></i>
                   </a>
-                </div>
-              </div>
-
-              {/* GitHub */}
-              <div className="flex items-center gap-4">
-                <div className="bg-gray-800/30 p-3 rounded-full">
-                  <i className="fab fa-github text-gray-300 text-xl"></i>
-                </div>
-                <div>
-                  <p className="text-sm text-gray-400">GitHub</p>
                   <a
                     href="https://github.com/Tamilara5an"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-blue-300 hover:underline"
+                    className="bg-gray-800 p-3 rounded-full hover:bg-gray-700/30 transition-all duration-300"
                   >
-                    https://github.com/Tamilara5an
+                    <i className="fab fa-github text-gray-300"></i>
+                  </a>
+                  <a
+                    href="#"
+                    className="bg-gray-800 p-3 rounded-full hover:bg-red-900/30 transition-all duration-300"
+                  >
+                    <i className="fab fa-youtube text-red-400"></i>
                   </a>
                 </div>
               </div>
             </div>
-
-            {/* Social Links */}
-            <div className="mt-8">
-              <h4 className="text-lg font-semibold mb-4">Let's connect on social media</h4>
-              <div className="flex gap-4">
-                <a
-                  href="#"
-                  className="bg-gray-800 p-3 rounded-full hover:bg-purple-900/30 transition-all duration-300"
-                >
-                  <i className="fab fa-twitter text-blue-400"></i>
-                </a>
-                <a
-                  href="https://www.linkedin.com/in/tamilarasan-dev/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-gray-800 p-3 rounded-full hover:bg-blue-900/30 transition-all duration-300"
-                >
-                  <i className="fab fa-linkedin-in text-blue-400"></i>
-                </a>
-                <a
-                  href="https://github.com/Tamilara5an"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-gray-800 p-3 rounded-full hover:bg-gray-700/30 transition-all duration-300"
-                >
-                  <i className="fab fa-github text-gray-300"></i>
-                </a>
-                <a
-                  href="#"
-                  className="bg-gray-800 p-3 rounded-full hover:bg-red-900/30 transition-all duration-300"
-                >
-                  <i className="fab fa-youtube text-red-400"></i>
-                </a>
-              </div>
+            <div className="hidden lg:block mr-20 mb-12 w-40 h-40 rounded-full border-1 border-white/60 shadow-xl shadow-white/20">
+              <img src={hackerImg} alt="Hacker" className="w-full h-full object-cover rounded-full opacity-50" />
             </div>
           </div>
         </div>

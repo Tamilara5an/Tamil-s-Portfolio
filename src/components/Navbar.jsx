@@ -1,5 +1,5 @@
 import React from 'react'
-import logoImg from '../assets/T.png'
+import logoImg from '../assets/tamil.jpg'
 import { NAV_ITEMS } from '../data/constants'
 
 const Navbar = ({ activeSection, scrollToSection }) => {
