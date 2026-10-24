@@ -4,7 +4,14 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
 body {
+  overflow-x: hidden;
+  width: 100%;
   font-family: 'Inter', sans-serif;
   background-color: #0f172a;
   color: #e2e8f0;
@@ -115,4 +122,21 @@ body {
 
 .company-logo {
   animation: fadeInSlideIn 0.5s ease-out forwards;
+}
+/* Wisework Sphere / Spiral Animation */
+.animation-wrapper {
+  width: 100%;
+}
+
+.sphere path {
+  fill: url(#sphereGradient);
+  stroke-width: 1.4px;
+  stroke: rgba(96, 165, 250, 0.6);
+  backface-visibility: hidden;
+}
+
+@media (min-width: 500px) {
+  .sphere path {
+    stroke-width: 1.1px;
+  }
 }

@@ -1,10 +1,10 @@
 import React from 'react';
-import GlobeAnimation from './GlobeAnimation';
+import SpiralAnimation from './SpiralAnimation';
 
 const HeroAnimation = () => {
   return (
-    <div className="relative w-full h-full">
-      <GlobeAnimation />
+    <div className="relative w-full h-full flex items-center justify-center">
+      <SpiralAnimation />
     </div>
   );
 };

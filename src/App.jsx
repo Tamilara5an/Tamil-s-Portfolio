@@ -38,7 +38,7 @@ const App = () => {
   }
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen overflow-x-hidden w-full bg-[#0f172a] text-[#e2e8f0]">
       <Navbar
         activeSection={activeSection}
         scrollToSection={scrollToSection}
